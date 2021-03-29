@@ -1,0 +1,3 @@
+Author: Eric Gassel
+
+I'm going to use Kali to complete assignments in this course (and potentially projects of my own beyond this course). I downloaded Kali onto my computer (Windows 10) after clearing up enough space.
