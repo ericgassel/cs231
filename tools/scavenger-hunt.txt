@@ -1,0 +1,58 @@
+Eric Gassel - scavanger hunt assignment due 4/2
+Working on Windows 10
+
+
+1. IPv4 address (connected to Carleton internet): 137.22.174.250
+    linux commandline code: 'curl ident.me'
+
+
+2. You can ping it in your Linux terminal. To do that, you type in ping followed by the web address of the website.
+    ex: ping carleton.edu
+    
+        64 bytes from wsgstatic.its.carleton.edu (137.22.94.116): icmp_seq=1 ttl=61 time=2.95 ms
+        
+        Thus, IP address = 137.22.94.116
+    
+    another command line option: 'host (url)'
+        
+3. The following command in Linux should give the hostname for an IP address: 
+    'nslookup (ip address)'
+    ex: nslookup 137.22.94.116
+    
+        116.94.22.137.IN-ADDR.ARPA      name = wsgstatic.its.carleton.edu.
+        Name:   ns.carleton.edu
+        Address: 137.22.1.13
+        Name:   ns2.onvoy.net
+        Address: 206.9.64.104
+        
+        
+Another command line option: 'host (ip address)'
+    116.94.22.137.IN-ADDR.ARPA domain name pointer wsgstatic.its.carleton.edu.
+    ns.carleton.edu has address 137.22.1.13
+    ns2.onvoy.net has address 206.9.64.104
+    
+4. In linux, move to the folder in which you want the file to be stored.
+        command line: 'cd (folder)'
+   Then, use the sftp command to access the files from the other machine.
+        command line: 'sftp (username)@(ip address or remote hostname)'
+   Move to the folder containing the file you want.
+        command line: 'cd (folder)'
+   Use the get command to get the file
+        command line: get (file)
+        
+        
+5. Use the lsof command: 'lsof -i :(port)'
+
+powershell: get-nettcpconnection | where{($_.Port -eq "(port)") -and ($_.State -eq "Listen")}
+    
+6. 'lsof -i' returns all the ports that have listening proccesses. In 5, a port is specified
+
+powershell: 'get-nettcpconnection | where {($_.State -eq "Listen")'
+
+7. Move to the folder you want to save the site in using cd: 'cd (folder). Then, use the wget command to retrieve the url: 'wget (url)' OR use curl as follows: curl -o (filename) (url)
+
+
+8. at linux command line: 'curl -I (url)'. The -I makes it only return the headers.
+
+
+9. I believe adding -v to the end of the curl command will return additional information that includes this. curl
