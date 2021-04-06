@@ -56,3 +56,11 @@ Eric Gassel and Owen Barnett - wireshark.txt
 3. The request was sent on line 8 of wireshark. We know this is the right request since it a HTTP GET request for the picture. 
 
 8	0.733365426	10.0.2.15	45.79.89.123	HTTP	364	GET /jeff_square_head.jpg HTTP/1.1
+
+===== QUESTIONS =====
+
+1. Can you clarify what TCP PSH means?
+
+2. Are there any tools to make the wireshark output more readable 
+
+3. What is TCP keep-alive and how it compare to TCP FIN. 
