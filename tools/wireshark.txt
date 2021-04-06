@@ -1,0 +1,42 @@
+Eric Gassel and Owen Barnett - wireshark.txt
+
+1. 
+
+1	0.000000000	10.0.2.15	132.163.97.5	TCP	74	57348 → 13 [SYN] Seq=0 Win=64240 Len=0 MSS=1460 SACK_PERM=1 TSval=4166394318 TSecr=0 WS=128
+2   0.030471572	132.163.97.5	10.0.2.15	TCP	60	13 → 57348 [SYN, ACK] Seq=0 Ack=1 Win=65535 Len=0 MSS=1460
+3	0.030621829	10.0.2.15	132.163.97.5	TCP	54	57348 → 13 [ACK] Seq=1 Ack=1 Win=64240 Len=0
+
+2. 10.0.2.15
+
+3. 4	0.059272999	132.163.97.5	10.0.2.15	DAYTIME	105	DAYTIME Response
+
+4. Daytime Protocol
+    Type: Response
+    Daytime: \n59310 21-04-06 00:41:12 50 0 0 216.4 UTC(NIST) * \n
+    
+    59310 - modified Julian date
+    
+    21-04-06 - today's date
+    
+    00:41:12 - time 
+    
+    50 - indicates whether US is in standard time or daylight savings time. 50 means that DST is in effect. This number will decrement every day until the change occurs.
+    
+    0 - Indicates whether a leap second will be added/subtracted at midnight on the last day of the current monnth. 0 indicates no leap second.
+    
+    0 - This 0 indicates the health of the server
+    
+    216.4 - number of milliseconds NIST that NIST advances the time code to partially compensate for network days
+    
+    UTC(NIST) - indicates we are recieving Coordinated Universal Time
+    
+    * - On-time-marker: the time shown is the time when the asterisk arrives
+
+
+5. SYN- Synchronized sequence number that is sent when the client wants to establish a connection
+
+6. ACK- an acknowledgement that the SYN is recieved; ACK signifies response of recieved segment
+
+7. FIN - serves as a connection termination request to the other device
+
+8. The NIST server initiated the closing of the TCP connection. We can tell because the source IP address is that of the NIST server, and the destination IP address was my machine.
