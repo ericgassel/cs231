@@ -1,0 +1,52 @@
+Being Eve - Eric Gassel
+
+*note: my work was done in python, and is included in this folder. I also included a screenshot of the output of my code (since I
+hard coded values into the code)*
+
+-------Diffie Hellman-------
+
+What we know:
+g = 17
+p = 61
+A = 46 = g^a mod p
+B = 5 = g^b mod p
+
+What we want to find out:
+a
+b
+K (we need a or b to find K)
+
+In order to solve this, I used a while loop in python to find the values of a and b that satisfy the equations '46 = g^a mod p' and 
+'5 = g^b mod p'. I learned that a = 14 and b = 26. Had the intitial numbers we knew been much, much larger, the code would run forever.
+
+I then used the formulas K = B^a mod p = A^b mod p to solve for the key K. I used both equations in my code to check that they were 
+equal, confirming that I had solved this correctly. I learned that K = 12.
+
+-------RCA-------
+
+What we know:
+e = 31
+n = 4661
+
+What we need to find:
+p
+q
+d
+
+I know that n = pq, so I used a nested for loop to find p and q. Typically, nested for loops are a bad idea because of their run time,
+but since sqrt(n) is about 68, I used this to pick a reasonable range of p and q values for the for loop to run through (and then stop
+looping when found). I found that p and q were 59 and 79 respectively (respectively is probably not neccessary as it doesn't matter which
+value is which, but I said it anyways because that is how it's assigned in the code). Had the numbers been much larger, this proccess
+would have been very inefficient and likely impossible. 
+
+Now, I need d. I know that ed mod (p-1)(q-1) = 1. I also had a general intuition that d < n, so I ran a while loop where the starting 
+value for d was n, and I tested values of d until the previous equation was satisfied (then I broke the loop). I found that d = 2335. 
+Had the numbers been much larger (and someone somehow had made it past finding p and q),this is where they would have failed. To find 
+d would be too difficult and innefficient. 
+
+Then I used another for loop to loop through the encrypted data. For each number in the encrypted data, I did the following: num^d mod n.
+This gives us decrypted data. 
+
+I then used python ASCII conversion commands to convert the numbers to characters so we can see the hidden message:
+
+Dear Bob, Check this out.  https://www.schneier.com/blog/archives/2017/12/e-mail_tracking_1.html Yikes! Your friend, Alice
